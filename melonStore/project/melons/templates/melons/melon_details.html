@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron container-fluid row flex" >
+        <h1>Melon Details</h1>
+        {% if melon %}
+        <div class="row">
+            <div class="col-md-5">
+                <img class="img-thumbnail" src="{{ melon.image_url }}" alt="{{ melon.common_name }}" style="width: 100%;">
+            </div>
+            <div class="col-md-5">
+                <h4>
+                    Name: {{melon.common_name}} <br>
+                    Price: ${{melon.price}}<br>
+                    Color: {{melon.color}}<br>
+                    Seedless: {{melon.seedless}}
+                </h4>
+                <div class="col-md-6">
+                    <form action="/melons/melon_details/{{melon.melon_id}}" method="post">
+                        <ul class="list-group">
+                            {{form.hidden_tag()}}
+                            <li class="list-group-item">
+                                {{form.quantity.label}} {{form.quantity()}}
+                            </li>
+                            <li class="list-group-item">
+                                {{form.submit()}}
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

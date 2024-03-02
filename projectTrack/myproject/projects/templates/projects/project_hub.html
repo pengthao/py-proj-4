@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+
+    <button><a href="{{ url_for('projects.new_project') }}">Add a project</a></button>
+    <button><a href="{{ url_for('projects.select_project') }}">Edit a project</a></button>
+  
+    <br>
+    <h2>{{ team_name.team_name }} Open Projects</h2>
+        <ul>
+            {% if open %}
+                {% for project in open %}
+                    <li>Project: {{ project.project_name }}<br>
+                    Description: {{ project.description }}<br>
+                    Completed: {% if project.completed == True %}Yes{% else %}No{% endif %}</li>
+                    <br>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    <h3>Completed Projects:</h3>
+        <ul>
+            {% if closed %}
+                {% for project in closed %}
+                    <li>Project: {{ project.project_name }}<br>
+                    Description: {{ project.description }}<br>
+                    Completed: {% if project.completed == True %}Yes{% else %}No{% endif %}</li>
+                    <br>
+                {% endfor %}
+            {% endif %}
+        </ul>
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+
+    <a href="{{ url_for('teams.add_change') }}"><button>Add or Change teams</button></a>
+  
+    <br>
+    <h2>Team Info</h2>
+        {% if teamName %}
+            {{teamName}}
+        {% endif %}
+
+    <h3>Team members:</h3>
+        {% if teamMembers %}
+            {% for member in teamMembers %}
+                <p>{{member}}</p>
+            {% endfor %}
+        {% endif %}
+</div>
+{% endblock %}

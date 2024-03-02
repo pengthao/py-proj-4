@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+<h3>Select Project</h3>
+    <div class="row">
+        <div class="col-sm-4">
+        <form action="" method="post">
+            <ul class="list-group">
+                {{form.hidden_tag()}}
+                <li class="list-group-item">
+                    {{ form.project.label }} {{ form.project }}
+                </li>
+                <li class="list-group-item">
+                    {{form.submit()}}
+                </li>
+            </ul>
+        </form>
+        </div>
+    </div>
+    <br>
+</div>
+{% endblock %}

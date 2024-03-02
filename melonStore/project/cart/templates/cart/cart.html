@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron container-fluid row flex" >
+        <h1>Cart</h1>
+        <div class="col-md-2 mb-4">
+            <a href="{{ url_for('cart.empty_cart') }}" class="btn btn-primary">Empty Cart</a>
+        </div>
+        <div class="row">
+            {% for melon in melon_list %}
+                <div class="col-md-2 mb-4">
+                    <a href="{{ url_for('melons.melon_details', melon_id=melon.melon_id) }}">        
+                        <img src="{{ melon.image_url }}" alt="{{ melon.common_name }}" class="rounded galleryImg" >
+                    </a>
+                    <br>
+                    {{ melon['common_name'] }} <br>
+                    <p>Price: ${{ melon['price'] }}</p>
+                        <form method="POST" action="{{ url_for('cart.edit_cart', melon_id=melon.melon_id) }}">
+                            {{ form.hidden_tag() }}
+                            Subtotal({% if melon['quantity'] > 1 %}
+                                items
+                                {% else %}
+                                item
+                                {% endif %}) : ${{ '%.2f'|format(melon['subtotal']) }}
+                                {{form.quantity(value=melon.quantity)}}
+                                
+                            <br>
+                            {{form.submit()}}
+                        </form>
+                        </div>
+            {% endfor %}
+        </div>
+        <p>Total: ${{ '%.2f'|format(order_total) }}</p>
+    </div>
+{% endblock %}

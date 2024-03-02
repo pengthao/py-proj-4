@@ -1,0 +1,8 @@
+.galleryImg {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    max-width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Display as block element */
+  }
